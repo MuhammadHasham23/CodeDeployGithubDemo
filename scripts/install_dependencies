@@ -1,10 +1,10 @@
 #!/bin/bash
 # update yum just in case
-yum update -y
+#yum update -y
 # get node into yum
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+#curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 # install node and npm in one line
-. ~/.nvm/nvm.sh
-nvm install node
+#. ~/.nvm/nvm.sh
+#nvm install node
 # install pm2 to restart node app
-npm i -g pm2@2.4.3
+#npm i -g pm2@2.4.3
