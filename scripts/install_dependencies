@@ -2,8 +2,9 @@
 # update yum just in case
 yum update -y
 # get node into yum
-curl --silent --location https://deb.nodesource.com/setup_16.x | bash -
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 # install node and npm in one line
-yum install -y nodejs
+. ~/.nvm/nvm.sh
+nvm install node
 # install pm2 to restart node app
 npm i -g pm2@2.4.3
