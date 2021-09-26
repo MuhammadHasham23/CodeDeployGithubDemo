@@ -1,12 +1,24 @@
-const port = process.env.PORT || 80
-require('http')
-  .createServer((req, res) => {
-    console.log(`incoming url: ${req.url} and incoming method: ${req.method}`)
-    res.writeHeader(200,{'Content-Type': 'text/html'})
-    res.write('<p>Buenos dias Montevideo</p>')
-    res.write('<p>This is Saturday. Bla blah blah</p>')
-    res.end('<h1>Hello World from amazing Node University course AWS Intermediate</h1>')
-  })
-  .listen(port, (error)=>{
-    console.log(`server is running on ${port}`)
-  })
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('<h1>Express Demo App</h1> <h4>Message: Success</h4> <p>Version 1.1</p>');
+})
+
+app.get('/products', (req, res) => {
+  res.send([
+    {
+      productId: '101',
+      price: 100
+    },
+    {
+      productId: '102',
+      price: 150
+    }
+  ])
+})
+
+app.listen(port, ()=> {
+  console.log(`Demo app is up and listening to port: ${port}`);
+})

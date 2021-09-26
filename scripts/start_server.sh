@@ -1,7 +1,18 @@
 #!/bin/bash
-# sudo chmod 755 /var/www/server.js # optional
-# this will restart app/server on instance reboot
-#crontab -l | { cat; echo "@reboot pm2 start /var/www/server.js -i 0 --name \"node-app\""; } | crontab -
-#sudo pm2 stop node-app
-# actually start the server
-#sudo pm2 start /var/www/server.js -i 0 --name "node-app"
+
+#give permission for everything in the express-app directory
+sudo chmod -R 777 /home/ec2-user/express-app
+
+#navigate into our working directory where we have all our github files
+cd /home/ec2-user/express-app
+
+#add npm and node to path
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # loads nvm bash_completion (node is in path now)
+
+#install node modules
+npm install
+
+#start our node app in the background
+node app.js > app.out.log 2> app.err.log < /dev/null &
